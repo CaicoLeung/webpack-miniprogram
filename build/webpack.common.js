@@ -4,6 +4,7 @@ const path = require('path')
 const utils = require('./utils')
 const CopyWepackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const appEntry = {
   app: './src/app.ts'
@@ -46,6 +47,16 @@ module.exports = {
         test: /\.ts$/,
         exclude: /node_modules/,
         loader: 'ts-loader'
+      },
+      {
+        test: /\.(c|le|sc|sa)ss$/i,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       }
     ]
   },
@@ -65,6 +76,9 @@ module.exports = {
           }
         },
       ]
-    })
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].wxss"
+    }),
   ]
 }
