@@ -12,6 +12,8 @@
   "author": "caico",
   "license": "MIT",
   "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^8.1.0",
     "glob": "^7.1.6",
     "ts-loader": "^8.0.18",
     "typescript": "^4.2.3",
