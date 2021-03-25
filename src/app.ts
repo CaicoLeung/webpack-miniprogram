@@ -1,3 +1,4 @@
-const a = 10
-
-console.log(a);
+async function meme(a: string) {
+  console.log(a)
+}
+console.log(meme('hi'));
