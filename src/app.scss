@@ -1,0 +1,8 @@
+@mixin test {
+  width: 100%;
+  background: #fff;
+}
+
+div {
+  @include test();
+}

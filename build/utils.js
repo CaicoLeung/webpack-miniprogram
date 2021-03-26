@@ -5,6 +5,10 @@ function resolve(dir) {
   return path.join(process.cwd(), dir)
 }
 
+function assetsPath(_path) {
+  return path.posix.join(resolve('dist'), _path)
+}
+
 function getEntry(appDir, pattern) {
   const files = glob.sync(path.join(resolve('src'), pattern))
   return files.reduce((acc, file_path) => {
@@ -17,5 +21,6 @@ function getEntry(appDir, pattern) {
 
 module.exports = {
   resolve,
-  getEntry
+  getEntry,
+  assetsPath
 }

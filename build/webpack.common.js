@@ -5,6 +5,7 @@ const utils = require('./utils')
 const CopyWepackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 
 const appEntry = {
   app: './src/app.ts'
@@ -49,13 +50,24 @@ module.exports = {
         loader: 'ts-loader'
       },
       {
-        test: /\.(c|le|sc|sa)ss$/i,
+        test: /\.(c|le|sc|sa)ss$/,
         exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
-          'style-loader',
           'css-loader',
           'sass-loader'
+        ]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|svg|png|gif|jpeg|jpg|icon)\??.*$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 52100, // 50 KB
+              filename: utils.assetsPath('img/[name].[ext]')
+            }
+          }
         ]
       }
     ]
@@ -78,7 +90,8 @@ module.exports = {
       ]
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].wxss"
+      filename: "[name].css"
     }),
+    new LodashModuleReplacementPlugin()
   ]
 }
