@@ -16,15 +16,16 @@ const pagesEntry = utils.getEntry(utils.resolve('src'), 'pages/**/index.ts')
 const entry = Object.assign({}, appEntry, componentsEntry, pagesEntry)
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry,
   output: {
     path: utils.resolve('dist'),
     filename: '[name].js'
   },
+  devtool: false,
   resolve: {
     // directories where to look for modules (in order)
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', 'json'],
     modules: ['node_modules']
   },
   module: {
@@ -50,7 +51,7 @@ module.exports = {
         loader: 'ts-loader'
       },
       {
-        test: /\.(c|le|sc|sa)ss$/,
+        test: /\.(sa|sc|c|le)ss$/,
         exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
@@ -59,7 +60,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(woff|woff2|eot|ttf|svg|png|gif|jpeg|jpg|icon)\??.*$/,
+        test: /\.(woff|woff2|eot|ttf|svg|png|gif|jpeg|jpg|icon)\??.*$/i,
         use: [
           {
             loader: 'url-loader',
@@ -90,7 +91,7 @@ module.exports = {
       ]
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css"
+      filename: "[name].wxss"
     }),
     new LodashModuleReplacementPlugin()
   ]

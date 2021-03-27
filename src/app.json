@@ -17,14 +17,14 @@
     "list": [
       {
         "pagePath": "pages/home/index",
-        "iconPath": "/assets/images/index_icon.png",
-        "selectedIconPath": "/assets/images/index_icon_active.png",
+        "iconPath": "/assets/images/tabbar/index_icon.png",
+        "selectedIconPath": "/assets/images/tabbar/index_icon_active.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/mine/index",
-        "iconPath": "/assets/images/mine_icon.png",
-        "selectedIconPath": "/assets/images/mine_icon_active.png",
+        "iconPath": "/assets/images/tabbar/mine_icon.png",
+        "selectedIconPath": "/assets/images/tabbar/mine_icon_active.png",
         "text": "我的"
       }
     ]

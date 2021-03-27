@@ -1,3 +1,4 @@
+import './app.scss'
 async function meme(a: string) {
   console.log(a)
 }
